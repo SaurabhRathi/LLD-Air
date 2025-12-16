@@ -1,0 +1,1 @@
+Please check how to setup multimodule maven project and have different  modules

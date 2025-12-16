@@ -1,0 +1,12 @@
+Easy Patterns to Use in almost each LLD question:
+1. Strategy
+2. Facade    -> Used in File Compression
+3. Singleton
+4. Factory  -> Used everywhere, car rental (car factory)
+
+5. Builder
+6. Decorator
+7. abstract factory
+8.
+
+LLD Toni: https://docs.google.com/document/d/1i3PkHeGJYCoNsMkt4itLWaKGXrfVv6NYIaEV9MFy_II/edit?tab=t.0
