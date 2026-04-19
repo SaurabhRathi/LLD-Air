@@ -1,13 +1,14 @@
 package com.root.allInOne.Multithreading.ForConfluentInterviewAndLLDRounds;
 
 import java.util.LinkedList;
+import java.util.Queue;
 
-class ProducerConsumerBufferLock {
+class ProducerConsumerQueueLock {
 
-    final LinkedList<Integer> buffer = new LinkedList<Integer>();
+    final Queue<Integer> queue = new LinkedList<Integer>();
     final int capacity;
 
-    public ProducerConsumerBufferLock(int capacity) {
+    public ProducerConsumerQueueLock(int capacity) {
         this.capacity = capacity;
     }
 
@@ -15,16 +16,16 @@ class ProducerConsumerBufferLock {
     void produce(int limit) throws InterruptedException {
 
         for(int value=0; value<limit; value++) {
-            synchronized(buffer) {
-                if(buffer.size()==capacity) {
+            synchronized(queue) {
+                if(queue.size()==capacity) {
                     //can't produce more
                     System.out.println();
                     System.out.println("Producer waiting");
-                    buffer.wait();
+                    queue.wait();
                 }
                 System.out.println("Producing = " + value);
-                buffer.add(value);
-                buffer.notify();
+                queue.add(value);
+                queue.notify();
             }
 //            Thread.sleep(2000);
         }
@@ -38,16 +39,16 @@ class ProducerConsumerBufferLock {
     void consume(int limit) throws InterruptedException{
 
         for(int i=0; i<limit; i++) {
-            synchronized(buffer) {
-                if(buffer.size()==0) {
+            synchronized(queue) {
+                if(queue.isEmpty()) {
                     //can't consume more
                     System.out.println();
                     System.out.println("Consumer waiting");
-                    buffer.wait();
+                    queue.wait();
                 }
-                int value = buffer.removeFirst();
+                int value = queue.poll();
                 System.out.println("Consuming = " + value);
-                buffer.notify();
+                queue.notify();
             }
 //            Thread.sleep(2000);
         }
@@ -63,7 +64,7 @@ public class ProducerConsumerUsingQueueAsLock {
     public static void main(String[] args) throws InterruptedException {
         int bufferSize = 8;
         int limit = 25;
-        ProducerConsumerBufferLock producerConsumer = new ProducerConsumerBufferLock(bufferSize);
+        ProducerConsumerQueueLock producerConsumer = new ProducerConsumerQueueLock(bufferSize);
 
         Thread producer = new Thread(new Runnable() {
             @Override

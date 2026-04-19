@@ -14,7 +14,7 @@ public class Pagination {
     void offsetBased() { //means rowNum based
         int offset = 1000;
         list.stream().skip(offset).limit(10).collect(Collectors.toList());
-        list.stream().skip(offset).limit(pageSize).collect(Collectors.toList());
+        list.stream().skip(offset).limit(2).collect(Collectors.toList());
     }
 
     void sort() {

@@ -35,9 +35,9 @@ public class LcDiscussL4 {
     }
 
     //You are given a stream of messages and you need to print the messages only if message doesn't appear in the last 5 secs
-    class SujeethQuestion {
-        void printIfItIsNotInLas5SEC
-    }
+//    class SujeethQuestion {
+//        void printIfItIsNotInLas5SEC
+//    }
 
 }
 
